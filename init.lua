@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-require("preferences")
+require("configs.options")
 require("configs.keymaps")
 
 -- Bootstrap lazy.nvim
@@ -31,6 +31,6 @@ require("lazy").setup({
 vim.cmd.colorscheme("tokyonight-storm")
 
 
--- TODO: notiy reduce time delay
+-- TODO: notify reduce time delay
 -- TODO: change todo comments
 -- TODO: change dashboard
