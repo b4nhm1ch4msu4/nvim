@@ -1,7 +1,7 @@
 -- define common options
 local opts = {
-  noremap = true,   -- non-recursive
-  silent = true,    -- do not show message
+  noremap = true, -- non-recursive
+  silent = true,  -- do not show message
 }
 
 -----------------
@@ -26,6 +26,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Telescope keymaps
 vim.keymap.set("n", "<leader>sf", ":Telescope find_files<CR>")
@@ -39,7 +41,12 @@ vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left toggle<CR>")
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 
 -- disable diagnostic
-vim.keymap.set("n", "<leader>ud", ":lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>" )
+vim.keymap.set("n", "<leader>ud", ":lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>")
 
 -- comment
-vim.keymap.set("n", "<leader>/", "gcc", {remap = true})
+vim.keymap.set("n", "<leader>/", "gcc", { remap = true })
+vim.keymap.set("v", "<leader>/", "gc", { remap = true })
+
+if next(vim.lsp.get_active_clients()) == nil then
+  vim.keymap.set("n", "<leader>f", "ggVG=", opts)
+end

@@ -27,7 +27,7 @@ return {
         },
         center = {
           {
-            icon = " ",
+            icon = " ",
             icon_hl = "Title",
             desc = "Recent Files",
             desc_hl = "String",
@@ -36,7 +36,7 @@ return {
             action = "Telescope oldfiles",
           },
           {
-            icon = " ",
+            icon = " ",
             icon_hl = "Title",
             desc = "Find File           ",
             desc_hl = "String",
@@ -47,7 +47,7 @@ return {
             action = "Telescope find_files",
           },
           {
-            icon = " ",
+            icon = " ",
             icon_hl = "Title",
             desc = "Live Grep",
             desc_hl = "String",
@@ -55,15 +55,21 @@ return {
             key_format = " %s",
             action = "Telescope live_grep",
           },
+          {
+            icon = " ",
+            icon_hl = "Title",
+            desc = "Quit",
+            desc_hl = "String",
+            key = "q",
+            key_format = " %s",
+            action = "qa",
+          },
         },
-        footer = {
-          "",
-          "",
-          today,
-          "",
-          "󰸼󰸼󰸼 Welcome Master! 󰸼󰸼󰸼",
-          "",
-        },
+        footer = function()
+        local stats = require("lazy").stats()
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+          return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+      end,
       },
     })
   end
