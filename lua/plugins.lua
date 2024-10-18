@@ -107,7 +107,7 @@ require("lazy").setup({
     },
     init = function()
       vim.notify = require("notify")
-      require("notify")("Hello there")
+      require("notify")(" Hello World !!! ")
     end,
 
   },
