@@ -4,7 +4,6 @@ return {
   event = "VimEnter",
   config = function()
     local db = require("dashboard")
-    local today = os.date("%A, %Y-%m-%d")
     db.setup({
       theme = "doom",
       config = {

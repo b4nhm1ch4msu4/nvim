@@ -26,10 +26,8 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        -- Use <C-b/f> to scroll the docs
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        -- Use <C-k/j> to switch in items
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -57,16 +55,8 @@ return {
         end, { "i", "s" }),
       }),
 
-      -- Let's configure the item's appearance
-      -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
       formatting = {
-        -- Set order from left to right
-        -- kind: single letter indicating the type of completion
-        -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
-        -- menu: extra text for the popup menu, displayed after "word" or "abbr"
         fields = { 'abbr', 'menu' },
-
-        -- customize the appearance of the completion menu
         format = function(entry, vim_item)
           vim_item.menu = ({
             nvim_lsp = '[Lsp]',
@@ -78,7 +68,6 @@ return {
         end,
       },
 
-      -- Set source precedence
       sources = cmp.config.sources({
         { name = 'nvim_lsp' }, -- For nvim-lsp
         { name = 'luasnip' }, -- For luasnip user

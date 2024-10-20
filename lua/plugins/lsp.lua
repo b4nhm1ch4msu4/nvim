@@ -17,18 +17,10 @@ return {
     })
 
     require('mason-lspconfig').setup({
-      -- A list of servers to automatically install if they're not already installed
       ensure_installed = { 'pylsp', 'lua_ls', 'clangd', 'cmake', 'bashls' },
     })
-    -- Set different settings for different languages' LSP
-    -- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    -- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
-    --     - the settings table is sent to the LSP
-    --     - on_attach: a lua callback function to run after LSP attaches to a given buffer
     local lspconfig = require('lspconfig')
 
-    -- Customized on_attach function
-    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     local opts = { noremap = true, silent = true }
     vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -48,11 +40,11 @@ return {
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
       vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-      vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-      vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-      vim.keymap.set('n', '<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, bufopts)
+      -- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+      -- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+      -- vim.keymap.set('n', '<leader>wl', function()
+      --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      -- end, bufopts)
       vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
@@ -62,25 +54,12 @@ return {
       end, bufopts)
     end
 
-    -- Configure each language
-    -- How to add LSP for a specific language?
-    -- 1. use `:Mason` to install corresponding LSP
-    -- 2. add configuration below
-    lspconfig.bashls.setup({
-      on_attach = on_attach,
-    })
-    lspconfig.clangd.setup({
-      on_attach = on_attach,
-    })
-    lspconfig.cmake.setup({
-      on_attach = on_attach,
-    })
-    lspconfig.pylsp.setup({
-      on_attach = on_attach,
-    })
+    lspconfig.bashls.setup({ on_attach = on_attach, })
+    lspconfig.clangd.setup({ on_attach = on_attach, })
+    lspconfig.cmake.setup({  on_attach = on_attach, })
+    lspconfig.pylsp.setup({  on_attach = on_attach, })
     lspconfig.lua_ls.setup({
-      on_attach = on_attach,
-      settings = {
+      on_attach = on_attach, settings = {
         Lua = {
           diagnostics = {
             globals = { 'vim' },
