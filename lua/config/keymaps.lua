@@ -20,6 +20,12 @@ vim.keymap.set("n", "<tab>", ":BufferNext<CR>")
 vim.keymap.set("n", "<S-tab>", ":BufferPrevious<CR>")
 vim.keymap.set("n", "<leader>x", ":BufferClose<CR>")
 
+-- Resize window using <ctrl> arrow keys
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+
 -- useful edit keymaps
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "<C-d>", "<C-d>zz")

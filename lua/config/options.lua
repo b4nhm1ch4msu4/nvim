@@ -22,3 +22,13 @@ vim.opt.smartcase = true
 
 vim.opt.scrolloff = 10
 vim.opt.wrap = false
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
